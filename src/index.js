@@ -6,12 +6,12 @@ const { PORT } = require('./config');
 const userRoutes = require('./routes/user.routes');
 
 const app = express();
+app.use(cors());
 
 connectDB();
 
 // Middlewares
 app.use(express.json())
-app.use(cors());
 app.use(morgan('dev'));
 
 // Routes

@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "my-api",
+    "name": "ya-jala",
     "builds": [
       {
         "src": "src/index.js",
@@ -12,10 +12,5 @@
         "src": "/(.*)",
         "dest": "/src/index.js"
       }
-    ],
-    "functions": {
-      "api": {
-        "maxDuration": 30 
-      }
-    }
+    ]
   }

@@ -3,8 +3,8 @@ const { createUserController, getAllUsersController } = require("../controllers/
 
 const router = express.Router();
 
+router.get('/users', getAllUsersController);
 router.post('/users', createUserController );
-router.put('/users', getAllUsersController);
 
 // router.post('/users/login', login );
 

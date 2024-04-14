@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     phone: {
-        type: String,
+        type: Number,
     },
     dateOfBirth: {
         type: Date,
@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
         type: String,
     },
     cp: {
-        type: String,
+        type: Number,
     },
     walletaddress: {
         type: String,

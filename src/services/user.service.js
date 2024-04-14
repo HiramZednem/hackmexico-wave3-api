@@ -10,7 +10,7 @@ const createUserService = async (req, res) => {
 
         const wallet = await createWallet();
         console.log(wallet.privateKey);
-        
+
         // Create a new user using the UserModel
         const user = new UserModel({
             email,
@@ -53,10 +53,6 @@ const getAllUsersService = async (req, res) => {
     try {
         const users = await UserModel.find();
 
-        
-        const decrypted = decrypt('67ce0cd87cdc8e50060f9ec846d4dd57')
-        console.log(decrypted);
-
         res.status(200).json({ message: 'Users retrieved successfully', users });
     } catch (error) {
         res.status(500).json({ message: 'Failed to retrieve users', error });
@@ -64,9 +60,33 @@ const getAllUsersService = async (req, res) => {
 }
 
 
+const updateUserInfoService = async (req, res) => {
+    try {
+        const { email, fullname, phone, dateOfBirth, state, address, cp } = req.body;
+        const user = await UserModel.findOne({email});
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.fullname = fullname;
+        user.phone = phone;
+        user.dateOfBirth = dateOfBirth;
+        user.state = state;
+        user.address = address;
+        user.cp = cp;
+        await user.save();
+        
+
+        res.status(200).json({ message: 'User info updated succsesfully', user });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to update user info', error });
+    }
+}
 
 module.exports = {
     createUserService,
     loginService,
     getAllUsersService,
+    updateUserInfoService,
 };

@@ -1,7 +1,7 @@
 const UserModel = require('../models/user.model'); 
 const bcrypt = require('bcrypt');
-const { encrypt, decrypt } = require('../util/crypto');
-const { createWallet } = require('../util/web3');
+const { encrypt } = require('../util/crypto');
+const { createWallet, deploy } = require('../util/web3');
 
 const createUserService = async (req, res) => {
     try {
@@ -84,9 +84,28 @@ const updateUserInfoService = async (req, res) => {
     }
 }
 
+const getLoanService = async (req, res) => {
+    try {
+        const { email, amount, time } = req.body;
+        const user = await UserModel.findOne({email});
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        const data = await deploy(user.fullname, 'prestamo', amount, 10, time)
+        
+
+        res.status(200).json({ message: 'Lean get succsesfully ', data });
+    } catch (error) {
+        res.status(500).json({ message: 'Failed getting te loan', error });
+    }
+}
+
 module.exports = {
     createUserService,
     loginService,
     getAllUsersService,
     updateUserInfoService,
+    getLoanService,
 };

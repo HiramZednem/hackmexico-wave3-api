@@ -1,0 +1,239 @@
+[
+	{
+		"inputs": [],
+		"name": "aceptarPrestamo",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_monto",
+				"type": "uint256"
+			}
+		],
+		"name": "realizarPago",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_nombre",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_descripcion",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_montoPrestamo",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_tasaInteres",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_tiempoLimite",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "usuarioA",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "usuarioB",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "montoPrestamo",
+				"type": "uint256"
+			}
+		],
+		"name": "PrestamoAceptado",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "estado",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "nombre",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "descripcion",
+				"type": "string"
+			},
+			{
+				"internalType": "enum Wave3.WaveState",
+				"name": "estadoWave",
+				"type": "uint8"
+			},
+			{
+				"internalType": "address",
+				"name": "usuarioA",
+				"type": "address"
+			},
+			{
+				"internalType": "address",
+				"name": "usuarioB",
+				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "pagoRealizado",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "montoPrestamo",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_usuario",
+				"type": "address"
+			}
+		],
+		"name": "obtenerSaldoUsuario",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "propietario",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "saldoUsuarioA",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "saldoUsuarioB",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tasaInteres",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tiempoFin",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tiempoInicio",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tiempoLimite",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

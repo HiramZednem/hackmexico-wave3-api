@@ -1,16 +1,22 @@
 const UserModel = require('../models/user.model'); 
 const bcrypt = require('bcrypt');
 const { encrypt, decrypt } = require('../util/crypto');
+const { createWallet } = require('../util/web3');
 
 const createUserService = async (req, res) => {
     try {
         const { email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        const wallet = await createWallet();
+        console.log(wallet.privateKey);
+        
         // Create a new user using the UserModel
         const user = new UserModel({
             email,
             password: hashedPassword,
+            walletaddress: wallet.address,
+            pvwalletaddress: encrypt(wallet.privateKey)
         });
 
         // Save the user to the database

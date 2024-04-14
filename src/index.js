@@ -3,6 +3,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const { connectDB } = require ('./database/db');
 const { PORT } = require('./config');
+const userRoutes = require('./routes/user.routes');
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.get('/', (req, res)=>{
     })
   });
 
-// app.use('/api',userRoutes);
+app.use('/api', userRoutes );
 
 // Server
 app.listen(PORT, ( ) => { 

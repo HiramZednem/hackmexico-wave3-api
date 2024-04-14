@@ -1,33 +1,11 @@
-import { conn } from "../database/db.js"
-// Correo, nombre, contrasena
-// Register
-export const createUser = async (req, res) => {
-    const { email, password } = req.body;
-    const username = "user"; 
+const { getAllUsersService, createUserService } = require("../services/user.service");
 
-    const [existingUser] = await conn.query("SELECT * FROM user WHERE email = ?", [email]);
+const createUserController = async (req, res) => createUserService(req, res);
 
-    if (existingUser.length > 0) {
-        res.json(false);
-    } else {
-        const [rows] = await conn.query("INSERT INTO user (username, email, password) VALUES (?,?,?)", [username, email, password]);
+const getAllUsersController = async (req, res) => getAllUsersService(req, res);
 
-        if (rows.insertId !== undefined) {
-            res.json(true);
-        } else {
-            res.json(false);
-        }
-    }
+
+module.exports = {
+  createUserController,
+  getAllUsersController
 };
-
-// Login
-export const login = async (req, res) => {
-    const { email, password } = req.body
-    const [rows] = await conn.query("SELECT * FROM user WHERE email = ? AND password = ?",[email,password])
-    
-    if (rows.length > 0) {
-        res.json(true)
-    } else {
-        res.json(false)
-    }
-}

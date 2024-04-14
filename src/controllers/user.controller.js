@@ -1,4 +1,4 @@
-const { getAllUsersService, createUserService, loginService, updateUserInfoService, getLoanService } = require("../services/user.service");
+const { getAllUsersService, createUserService, loginService, updateUserInfoService, getLoanService, sendUSDCService } = require("../services/user.service");
 
 const createUserController = async (req, res) => createUserService(req, res);
 
@@ -10,6 +10,8 @@ const updateUserInfoController = async (req, res) => updateUserInfoService(req, 
 
 const getLoanController = async (req, res) => getLoanService(req, res);
 
+const sendUSDCController = async (req, res) => sendUSDCService(req, res);
+
 
 module.exports = {
   createUserController,
@@ -17,4 +19,5 @@ module.exports = {
   loginController,
   updateUserInfoController,
   getLoanController,
+  sendUSDCController
 };

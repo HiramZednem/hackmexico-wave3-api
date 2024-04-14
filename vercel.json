@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "name": "my-api",
+    "builds": [
+      {
+        "src": "src/index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/src/index.js"
+      }
+    ],
+    "functions": {
+      "api": {
+        "maxDuration": 30 
+      }
+    }
+  }

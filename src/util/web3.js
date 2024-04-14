@@ -45,31 +45,34 @@ const getETHBalance = async ( address ) => {
     console.log(balance);
 }
 
-const transferUSDC = async (fromAddress, secretAddress,toAddress, amount ) => {
-    amount = amount  * Math.pow(10, 6) // transformacion a formato usdc
+const transferUSDC = async (toAddress, amount ) => {
+    //initialize a wallet(with funds)
+    const wallet = web3.eth.wallet.add(WAVE3_WALLET);
+
     const usdcContract = new web3.eth.Contract(USDCABI, usdcContractAddress);
     const transfer = usdcContract.methods.transfer(toAddress, amount);
     const encodedABI = transfer.encodeABI();
     const gasPrice = await web3.eth.getGasPrice();
-    const gasLimit = await transfer.estimateGas({ from: fromAddress });
+    const gasLimit = await transfer.estimateGas({ from: wallet[0].address });
 
+    console.log(wallet[0])
     const transaction = {
-        from: fromAaddress,
+        from: wallet[0].address,
         to: usdcContractAddress,
-        gasPrice: gasPrice,
-        data: encodedABI
+        data: encodedABI,
+        gasPrice: gasPrice
     };
 
     const signedTransaction = await web3.eth.accounts.signTransaction(
         transaction,
-        secretAddress
+        WAVE3_WALLET
     );
 
     const receipt = await web3.eth.sendSignedTransaction(
         signedTransaction.rawTransaction
     );
 
-    return { receipt};
+    return { message: 'ok' };
 };
   
 
